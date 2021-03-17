@@ -12,8 +12,8 @@ You are required to:
 
 - Implement an **Authors** page that fetches and displays all authors under Penguin random house
 - Use VueX to store data from the API
-- Implement an **AuthorsDetails** page that fetches the details about an author using their Id
-- Link the **AuthorDetails** to the **Authors** page using Vue Router
+- Implement an **Author** page that fetches the details about an author using their Id
+- Link the **Author** to the **Authors** page using Vue Router
 
 ### What we'll be watching out for
 
