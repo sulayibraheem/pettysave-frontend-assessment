@@ -1,17 +1,49 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <ol>
+     <li v-for="response in allPosts" :key="response.id">
+        {{response}}
+       </li>
+     </ol>
+   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+  import axios from 'axios';
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+
+  props: {
+    msg: String
+  },
+  data () {
+    return {
+      allPosts: ""
+    }
+  },
+  mounted: async function () {
+      const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+       await axios.get(apiUrl)
+      .then(response => {
+        this.allPosts = response.data;
+        console.log(response.data)})
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  /* list-style-type: none; */
+  padding: 0;
+}
+li {
+  /* display: inline-block;
+  margin: 0 10px; */
+}
+a {
+  color: #42b983;
+}
+</style>
