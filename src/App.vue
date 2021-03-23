@@ -1,14 +1,25 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <the-navigation />
     </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+import TheNavigation from './components/TheNavigation.vue'
+
+export default {
+  components: { TheNavigation }
+}
+</script>
+
 <style>
+body {
+  font-family: "Roboto";
+  background-color: #f0f8ff;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
