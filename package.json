@@ -13,21 +13,14 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-<<<<<<< HEAD
     "vuex": "^3.4.0"
-=======
-    "vuex": "^3.6.2"
->>>>>>> 6495f8f5c0f789491ad9fd8ca6b142a60768df02
   },
   "devDependencies": {
     "@babel/polyfill": "^7.11.5",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "^4.5.12",
-<<<<<<< HEAD
     "@vue/cli-plugin-vuex": "^4.5.12",
-=======
->>>>>>> 6495f8f5c0f789491ad9fd8ca6b142a60768df02
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.5.2",

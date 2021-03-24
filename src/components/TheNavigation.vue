@@ -29,10 +29,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 div#nav {
   padding: 0;
-<<<<<<< HEAD
 
     .navbar {
       background-color: #032541;
@@ -66,30 +65,6 @@ div#nav {
       }
     }
   }
-=======
-  .navbar {
-  background-color: #032541;
-  margin: auto 0;
-  a.nav-link:hover {
-      color: #286b4d;
-  }
-  
-  .form-control-lg {
-    height: calc(1.0em + 0.6rem);
-}
-.submit {
-  background:#42b983;
-}
-.submit:hover {
-      color: #286b4d;
-  }
-@media (max-width: 576px){
-  .form-control-lg {
-    margin: 20px 0 0px 0;
-}
-}
-}
->>>>>>> 6495f8f5c0f789491ad9fd8ca6b142a60768df02
 }
 
 
