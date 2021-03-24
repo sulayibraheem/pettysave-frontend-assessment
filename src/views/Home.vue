@@ -1,22 +1,28 @@
 <template>
     <b-container class="home">
       <h3>Json Placeholder Posts<hr></h3>
+         <pagination/>
+      <cards />
+   
     <ol>
      <li v-for="response in allPosts" :key="response.id">
         {{response}}
        </li>
      </ol>
-     <ul>
-       <li v-for="response in allImages" :key="response.id">
-         {{response}}
-       </li>
-     </ul>
+     
     </b-container>
 </template>
 
 <script>
   import axios from 'axios';
+  import Cards from '@/components/Cards.vue';
+  import Pagination from '../components/Pagination.vue';
+  
 export default {
+  components: {
+    Cards,
+    Pagination
+    },
 
   props: {
     msg: String
@@ -24,21 +30,27 @@ export default {
   data () {
     return {
       allPosts: "",
-      allImages: ""
+      allImages: [],
+      comments: ""
     }
   },
   mounted: async function () {
       const apiPosts = 'https://jsonplaceholder.typicode.com/posts';
        await axios.get(apiPosts)
-      .then(response => {
-        this.allPosts = response.data;
-        console.log(response.data)})
+      .then(response => this.allPosts = response.data)
       
       const apiImages = 'https://jsonplaceholder.typicode.com/albums/1/photos';
        await axios.get(apiImages)
-      .then(response => {
-        this.allImages = response.data;
-        console.log(response.data)})
+      .then(response => this.allImages.push(...response.data))
+
+      const moreImages = 'https://jsonplaceholder.typicode.com/albums/2/photos';
+       await axios.get(moreImages)
+      .then(response => this.allImages.push(...response.data))
+
+      const apiComments = 'https://jsonplaceholder.typicode.com/posts/2/comments';
+       await axios.get(apiComments)
+      .then(response => {this.comments = response.data
+      })
   }
 }
 </script>

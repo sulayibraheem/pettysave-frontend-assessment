@@ -6,7 +6,6 @@
     <transition name="fade" mode="out-in">
     <router-view/>
     </transition>
-    <router-view/>
   </div>
 </template>
 
@@ -25,7 +24,7 @@ body {
 }
 .fade-leave-active,
 .fade-enter-active {
-  transition: opacity 0.5s
+  transition: opacity 0.3s
 }
 .fade-enter,
 .fade-leave-to {

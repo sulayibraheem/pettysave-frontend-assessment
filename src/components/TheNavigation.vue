@@ -66,6 +66,4 @@ div#nav {
     }
   }
 }
-
-
 </style>
