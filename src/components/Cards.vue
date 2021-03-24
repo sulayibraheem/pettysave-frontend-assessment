@@ -1,6 +1,6 @@
 <template>
   <b-container fluid>
-    <b-row align-v="start" v-for="post in allPosts" :key='post.id'>
+    <b-row align-v="start" v-for="post in posts" :key='post.id'>
      <b-card no-body
     img-src= "https://via.placeholder.com/150/92c952"
     img-alt="Image"
@@ -36,7 +36,7 @@
 import { BIconHeartFill, BIconHeart } from 'bootstrap-vue';
 import { mapGetters, mapActions } from "vuex";
 export default {
-
+  props:['posts'],
   computed:mapGetters([
     'allImages',
     'allPosts'

@@ -10,6 +10,7 @@
       next-text="Next"
       last-text="Last"
       class= "pag"
+      @input=paginate(currentPage)
     ></b-pagination>
     </div>
 </template>
@@ -23,12 +24,23 @@ export default {
       jobs: '',
       perPage: 3,
       currentPage: 1,
-      rows: this.$store.state.rows
+      displayJobs: []
     }
   },
   computed:mapGetters([
-    'allPosts'
-  ])
+    'allPosts','rows'
+  ]),
+  methods: {
+    async fetchPosts() {
+      this.displayJobs = this.allPosts.slice(0,3)
+    console.log("test", this.store.getters.allPosts)
+    },
+    paginate(currentPage) {
+      console.log(alert(currentPage))
+        const start = (currentPage - 1) * this.perPage
+        this.displayJobs = this.allPosts.slice(start, start+3)
+    }
+  }
 }
 </script>
 
