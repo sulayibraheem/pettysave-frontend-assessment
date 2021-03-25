@@ -47,10 +47,6 @@ export default {
   ])
   },
   methods: {
-    async fetchPosts() {
-    //   this.displayPosts = this.allPosts.slice(0,3)
-    // console.log("test", this.store.getters.allPosts)
-    },
     paginate(currentPage) {
        this.$store.dispatch('paginate', {currentPage, perPage: this.perPage})
     }

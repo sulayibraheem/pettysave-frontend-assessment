@@ -14,11 +14,13 @@
         
       </b-col>
     </b-row>
+
   </b-container>
 </template>
 
 <script>
 import { BIconHandThumbsDown, BIconHandThumbsUp} from "bootstrap-vue"
+import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -35,12 +37,17 @@ export default {
         return this.$store.getters.allPosts.find(
           post => post.id === this.postId
         )
-      }
+      },
+      ...mapGetters(['allComments'])
     },
     methods: {
       unlike() {
           this.like = !this.like
-      }
+      },
+      ...mapActions(['getComments'])
+    },
+    created() {
+      this.getComments()
     }
 }
 </script>

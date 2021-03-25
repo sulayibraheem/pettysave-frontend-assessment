@@ -2,7 +2,7 @@
   <b-container fluid>
     <b-row align-v="start" v-for="post in posts" :key='post.id'>
      <b-card no-body
-    img-src= "https://via.placeholder.com/150/92c952"
+    :img-src= allImages[post.id].url
     img-alt="Image"
     :body="post.body"
     img-top
@@ -75,6 +75,18 @@ export default {
 
     div.card-body {
       border: none;
+      max-width: 100%;
+
+      .card-text,
+      .card-title {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .card-title {
+        -webkit-line-clamp: 1;
+      }
     }
     .card-footer {
       text-align: center;
