@@ -51,25 +51,6 @@ export default {
        this.$store.dispatch('paginate', {currentPage, perPage: this.perPage})
     }
   }
-
-  // mounted: async function () {
-  //     const apiPosts = 'https://jsonplaceholder.typicode.com/posts';
-  //      await axios.get(apiPosts)
-  //     .then(response => this.allPosts = response.data)
-      
-  //     const apiImages = 'https://jsonplaceholder.typicode.com/albums/1/photos';
-  //      await axios.get(apiImages)
-  //     .then(response => this.allImages.push(...response.data))
-
-  //     const moreImages = 'https://jsonplaceholder.typicode.com/albums/2/photos';
-  //      await axios.get(moreImages)
-  //     .then(response => this.allImages.push(...response.data))
-
-  //     const apiComments = 'https://jsonplaceholder.typicode.com/posts/2/comments';
-  //      await axios.get(apiComments)
-  //     .then(response => {this.comments = response.data
-  //     })
-  // }
 }
 </script>
 

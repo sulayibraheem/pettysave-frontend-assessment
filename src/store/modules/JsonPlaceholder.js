@@ -18,6 +18,7 @@ const getters = {
 }
 
 const actions = {
+  //Fethc All Posts from the api
   async getPosts({ commit }) {
     const apiPosts = await axios.get('https://jsonplaceholder.typicode.com/posts');
     const firstDisplay = await apiPosts.data.slice(0,6)
@@ -25,20 +26,22 @@ const actions = {
     commit('setRows', apiPosts.data.length)
     commit('setDisplayPosts', firstDisplay)
   },
-
+  //Fetch All Images from the api. Fetched from two ids to get 100 images
   async getImages({ commit }) {
     const apiImages = await axios.get('https://jsonplaceholder.typicode.com/albums/1/photos');
     const response = await apiImages.data;
-    commit('setAllImages', response)
+    const moreImages = await axios.get('https://jsonplaceholder.typicode.com/albums/2/photos');
+    const res = await moreImages.data;
+    commit('setAllImages', [...response, ...res]);
   },
-
+  //Fetch all comments from the api
   async getComments({ commit }) {
-    const apiComments = await axios.get('https://jsonplaceholder.typicode.com/albums/1/photos');
+    const apiComments = await axios.get('https://jsonplaceholder.typicode.com/posts/2/comments');
     const response = await apiComments.data;
-    console.log(response)
     commit('setComments', response)
+    console.log(response)
   },
-
+  //Function that controls the pagination
   async paginate({commit, state}, {currentPage, perPage}){
     const start = (currentPage - 1) * perPage
     const display = state.allPosts.slice(start, start+6)
