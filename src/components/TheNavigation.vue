@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="dark">
+  <b-navbar toggleable="md" type="dark">
     <b-navbar-brand translate="no">Blog</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

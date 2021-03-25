@@ -13,10 +13,17 @@ const routes = [
   {
     path: '/favPost',
     name: 'favPost',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "postPage" */ '../views/PostPage.vue')
+    component: () => import(/* webpackChunkName: "favouritesPage" */ '../views/PostPage.vue')
+  },
+  {
+    path: "/postDetails/:id",
+    name: "postDetails",
+    component: () => import(/*webpackChunkName: "postDetails" */ "../views/PostDetails.vue")
+  },
+  {
+    path: "*",
+    name: "notFound",
+    component: () => import(/*webpackChunkName: "postDetails" */ "../views/NotFound.vue")
   }
 ]
 

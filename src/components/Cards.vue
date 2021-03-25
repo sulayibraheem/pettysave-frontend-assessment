@@ -18,7 +18,7 @@
      {{post.body}}
     </b-card-text>
 
-    <b-button  to="/" variant="primary">Go somewhere</b-button>
+    <b-button  :to="{name: 'postDetails', params: {id: post.id}}" variant="secondary">See Post</b-button>
     </b-card>
     <b-card-footer v-if="click">
       <button><b-icon-heart /></button>

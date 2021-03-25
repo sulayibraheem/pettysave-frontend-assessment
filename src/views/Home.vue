@@ -27,9 +27,7 @@
 </template>
 
 <script>
-  // import axios from 'axios';
   import Cards from '@/components/Cards.vue';
-  // import Pagination from '../components/Pagination.vue';
   import { mapGetters } from "vuex";
   
 export default {
