@@ -1,7 +1,7 @@
 <template>
     <b-container class="home">
       <h3>Json Placeholder Posts<hr></h3>
-      <cards :posts="displayJobs"/>
+      <cards :posts="displayPosts"/>
        <div class="overflow-auto">
     <!-- Use text in props -->
     <b-pagination
@@ -39,24 +39,22 @@ export default {
 
    data () {
     return {
-      perPage: 3,
+      perPage: 6,
       currentPage: 1,
-      displayJobs: []
     }
   },
   computed: {
     ...mapGetters([
-    'allPosts','rows'
+    'allPosts','rows','displayPosts'
   ])
   },
   methods: {
     async fetchPosts() {
-      this.displayJobs = this.allPosts.slice(0,3)
-    console.log("test", this.store.getters.allPosts)
+    //   this.displayPosts = this.allPosts.slice(0,3)
+    // console.log("test", this.store.getters.allPosts)
     },
     paginate(currentPage) {
-        const start = (currentPage - 1) * this.perPage
-        this.displayJobs = this.allPosts.slice(start, start+3)
+       this.$store.dispatch('paginate', {currentPage, perPage: this.perPage})
     }
   }
 
