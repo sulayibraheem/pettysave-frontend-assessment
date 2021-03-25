@@ -39,13 +39,23 @@ const actions = {
     const apiComments = await axios.get('https://jsonplaceholder.typicode.com/posts/2/comments');
     const response = await apiComments.data;
     commit('setComments', response)
-    console.log(response)
   },
   //Function that controls the pagination
   async paginate({commit, state}, {currentPage, perPage}){
     const start = (currentPage - 1) * perPage
     const display = state.allPosts.slice(start, start+6)
     commit('setDisplayPosts', display)
+  },
+  updatePagination({commit, dispatch}, {updatePage,currentPage,perPage}){
+    commit("setAllPosts", updatePage);
+    commit("setRows", updatePage.length);
+    dispatch('paginate',{ currentPage, perPage });
+  },
+  async search({ dispatch }, {text}){
+    await dispatch('getPosts');
+    await dispatch('getImages');
+    const updatePage = await state.allPosts.filter(val => val.title.toLowerCase().includes(text.toLowerCase()));
+    dispatch("updatePagination",{updatePage, currentPage: 1, perPage: 6});
   }
 }
 

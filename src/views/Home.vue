@@ -50,7 +50,7 @@ export default {
     paginate(currentPage) {
        this.$store.dispatch('paginate', {currentPage, perPage: this.perPage})
     }
-  }
+} 
 }
 </script>
 

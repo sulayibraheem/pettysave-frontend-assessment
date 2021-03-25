@@ -1,12 +1,12 @@
 <template>
   <b-container>
     <b-row>
-      <b-col class="image">
+      <b-col class="image" md="6">
         <img :src="allImages[post.id].url"
           :alt="allImages[post.id].title" />
       </b-col>
-      <b-col>
-        <h3 class="title">Title: {{post.title}} <hr></h3>
+      <b-col class="post" md="6">
+        <h3 class="title">Post Title: {{post.title}} <hr></h3>
         <p class="body">{{post.body}}</p>
          <button v-if="like" @click="unlike"><b-icon-hand-thumbs-down /></button>
         <button v-else @click="unlike"><b-icon-hand-thumbs-up /> Liked</button>
@@ -14,12 +14,12 @@
           <h3 class="title">Comments<hr></h3>
         </b-col>
         <b-col>
-          <div class="comments" v-for="comment in allComments" :key="comment.id">
-              <h5>Name: <span class="name">{{comment.name}}</span></h5>
-              <h5>Email: <span>{{comment.email}}</span></h5>
+          <b-col class="comments" v-for="comment in allComments" :key="comment.id">
+              <h6>Name: <span class="name">{{comment.name}}</span></h6>
+              <h6>Email: <span>{{comment.email}}</span></h6>
               <p>{{comment.body}}</p>
               <hr>
-          </div>
+          </b-col>
         </b-col>
       </b-col>
     </b-row>
@@ -65,31 +65,39 @@ export default {
 .container {
     padding: {
       top: 70px;
-      bottom: 70px;
     }
-    .image {
-      display: flex;
-      align-items: center;
-        img {
-          max-width: 100%;
-          max-height: auto;
-          border-radius: 7px;
-        }
+  .image {
+    display: flex;
+    align-items: center;
+      img {
+        max-width: 100%;
+        max-height: auto;
+        border-radius: 7px;
+        margin-bottom: 50px;
+      }
     }
-  h3 {
-  color: #032541;
-  text-align: left;
-    hr {
-    width: 50px;
-    margin-left: 0;
-    border: 1px solid #808080;
-    border-radius: 50%;;
-    }
-  }
-  .col {
+  .post {
     text-align: center;
+    hr {
+      border: 1px solid rgb(68, 67, 67);
+      border-radius: 50%;
+    }
+    h3 {
+    color: #032541;
+    text-align: left;
+      hr {
+      width: 50px;
+      margin-left: 0;
+      border: 1px solid #808080;
+      border-radius: 50%;;
+      }
+    }
     p {
       text-align: left;
+    }
+    p::first-letter {
+      text-transform: capitalize;
+      font-size: 2em;
     }
     button {
     border: 0;
@@ -97,18 +105,14 @@ export default {
   }
   .comments {
     text-align: left;
-    h5 {
+    h6 {
       margin: 10px auto;
-      span {
-        font-weight: 500;
-        font-size: 0.7em;
-      }
       .name {
         text-transform: capitalize;
       }
     }
     p::first-letter {
-      font-size: 2em;
+      font-size: 1.3em;
       font-weight: 300;
       text-transform: capitalize;
     }

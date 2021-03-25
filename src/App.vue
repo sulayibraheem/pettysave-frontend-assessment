@@ -19,8 +19,9 @@ export default {
 
 <style>
 body {
-  font-family: "Roboto";
+  font-family: 'Playfair Display', serif;
   background-color: #f0f8ff;
+    padding-bottom: 100px;
 }
 .fade-leave-active,
 .fade-enter-active {
