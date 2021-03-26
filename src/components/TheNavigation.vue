@@ -31,6 +31,7 @@ export default {
   methods: {
     search() {
       this.$store.dispatch('search', {text: this.searchText})
+      this.searchText = "";
     },
     home(){
       this.$store.dispatch('noResult');
