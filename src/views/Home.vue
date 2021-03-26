@@ -82,7 +82,7 @@ export default {
      display: flex;
      justify-content: flex-end;
     .pag {
-      margin: 50px 0;  
+      margin: 50px 0;
     }
   }
   @media (max-width: 576px) {
