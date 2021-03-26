@@ -11,11 +11,6 @@ const routes = [
     component: Home
   },
   {
-    path: '/favPost',
-    name: 'favPost',
-    component: () => import(/* webpackChunkName: "favouritesPage" */ '../views/PostPage.vue')
-  },
-  {
     path: "/postDetails/:id",
     name: "postDetails",
     component: () => import(/*webpackChunkName: "postDetails" */ "../views/PostDetails.vue")
