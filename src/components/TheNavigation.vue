@@ -2,7 +2,7 @@
   <b-navbar toggleable="sm" type="dark">
     <b-navbar-brand translate="no">Blog</b-navbar-brand>
       <b-navbar-nav>
-        <router-link class="nav-link" to="/"><b-icon-house-fill /></router-link>
+        <router-link class="nav-link" to="/"><b-icon-house-fill @click="home"/></router-link>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-form @submit.prevent="search">
@@ -31,6 +31,9 @@ export default {
   methods: {
     search() {
       this.$store.dispatch('search', {text: this.searchText})
+    },
+    home(){
+      this.$store.dispatch('noResult');
     }
   }
 }
@@ -64,7 +67,7 @@ div#nav {
 
     @media (max-width: 576px){
       .form-control-lg {
-        margin: 20px 0 0px 0;
+        margin: 20px 0 5px 0;
       }
       ul.ml-auto {
         margin-left: 0 !important;
