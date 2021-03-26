@@ -1,29 +1,30 @@
 <template>
-    <b-container class="home">
-      <b-container>
+  <b-container class="home">
+    <b-container>
       <h3>Json Placeholder Posts<hr></h3>
-      </b-container>
-      <cards :posts="displayPosts"/>
-      <b-container v-if='searching'  style="text-align: center">
+    </b-container>
+    <cards :posts="displayPosts"/>
+    <b-container v-if='searching'  style="text-align: center">
       <h3>No Result Found</h3>
       <b-button class='return' @click="search">Return To Posts</b-button>
-      </b-container>
-      <b-container class="paginate">
-       <div class="overflow-auto">
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      first-text="First"
-      prev-text="Prev"
-      next-text="Next"
-      last-text="Last"
-      class= "pag"
-      @input=paginate(currentPage)
-    ></b-pagination>
-    </div>
     </b-container>
+    <b-container class="paginate">
+      <div class="overflow-auto">
+        <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        first-text="First"
+        prev-text="Prev"
+        next-text="Next"
+        last-text="Last"
+        class= "pag"
+        @input=paginate(currentPage)
+        >
+        </b-pagination>
+      </div>
     </b-container>
+  </b-container>
 </template>
 
 <script>
@@ -48,7 +49,7 @@ export default {
   },
   methods: {
     paginate(currentPage) {
-       this.$store.dispatch('paginate', {currentPage, perPage: this.perPage})
+      this.$store.dispatch('paginate', {currentPage, perPage: this.perPage})
     },
     search(){
       this.$store.dispatch('noResult')
@@ -62,7 +63,7 @@ export default {
   h3 {
   margin: 40px 0 ;
   color: #032541;
-    hr {
+  hr {
     width: 50px;
     margin-left: 0;
     border: 1px solid #808080;
@@ -80,9 +81,9 @@ export default {
    div.overflow-auto {
      display: flex;
      justify-content: flex-end;
-  .pag {
-    margin: 50px 0;  
-  }
+    .pag {
+      margin: 50px 0;  
+    }
   }
   @media (max-width: 576px) {
     div.overflow-auto {

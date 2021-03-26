@@ -28,44 +28,44 @@ const actions = {
   async getPosts({ commit }) {
     commit('setShowSpinner', true)
     try {
-      const apiPosts = await axios.get('https://jsonplaceholder.typicode.com/posts');
-      const firstDisplay = await apiPosts.data.slice(0,6)
-      commit('setStorePosts', apiPosts.data)
-      commit('setAllPosts', apiPosts.data)
-      commit('setRows', apiPosts.data.length)
-      commit('setDisplayPosts', firstDisplay)
+        const apiPosts = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        const firstDisplay = await apiPosts.data.slice(0,6)
+        commit('setStorePosts', apiPosts.data)
+        commit('setAllPosts', apiPosts.data)
+        commit('setRows', apiPosts.data.length)
+        commit('setDisplayPosts', firstDisplay)
     } catch(e){
-      console.error(e)
-    } finally {
-      commit('setShowSpinner', false)
-    }
+        console.error(e)
+      } finally {
+        commit('setShowSpinner', false)
+        }
   },
   //Fetch All Images from the api. Fetched from two ids to get 100 images
   async getImages({ commit }) {
     try {
-      const apiImages = await axios.get('https://jsonplaceholder.typicode.com/albums/1/photos');
-      const response = await apiImages.data;
-      const moreImages = await axios.get('https://jsonplaceholder.typicode.com/albums/2/photos');
-      const res = await moreImages.data;
-      commit('setAllImages', [...response, ...res]);
-      commit('setStoreImages', [...response, ...res]);
+        const apiImages = await axios.get('https://jsonplaceholder.typicode.com/albums/1/photos');
+        const response = await apiImages.data;
+        const moreImages = await axios.get('https://jsonplaceholder.typicode.com/albums/2/photos');
+        const res = await moreImages.data;
+        commit('setAllImages', [...response, ...res]);
+        commit('setStoreImages', [...response, ...res]);
     } catch(e){
         console.error(e)
-    } finally {
+      } finally {
         commit('setShowSpinner', false)
-    }
+        }
   },
   //Fetch all comments from the api
   async getComments({ commit }) {
     try {
-      const apiComments = await axios.get('https://jsonplaceholder.typicode.com/posts/2/comments');
-      const response = await apiComments.data;
-      commit('setComments', response)
+        const apiComments = await axios.get('https://jsonplaceholder.typicode.com/posts/2/comments');
+        const response = await apiComments.data;
+        commit('setComments', response)
     } catch(e){
-      console.error(e)
-    } finally {
-      commit('setShowSpinner', false)
-    }
+        console.error(e)
+      } finally {
+          commit('setShowSpinner', false)
+       }
   },
   //Function that controls the pagination
   async paginate({commit, state}, {currentPage, perPage}){

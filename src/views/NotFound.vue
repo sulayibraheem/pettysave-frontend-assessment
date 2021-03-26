@@ -1,8 +1,10 @@
 <template>
-   <b-container class="home">
-      <h3>Error 404!!! Page Not Found<hr></h3>
-      <b-button variant="warning" :to="{name: 'Home'}">Return To Posts</b-button>
-      </b-container>
+  <b-container class="home">
+    <h3>Error 404!!! Page Not Found<hr></h3>
+    <b-button variant="warning" :to="{name: 'Home'}">
+      Return To Posts
+    </b-button>
+  </b-container>
 </template>
 
 <script>
