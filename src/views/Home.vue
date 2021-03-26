@@ -1,9 +1,15 @@
 <template>
     <b-container class="home">
+      <b-container>
       <h3>Json Placeholder Posts<hr></h3>
+      </b-container>
       <cards :posts="displayPosts"/>
+      <b-container v-if='searching'  style="text-align: center">
+      <h3>No Result Found</h3>
+      <b-button class='return' @click="search">Return To Posts</b-button>
+      </b-container>
+      <b-container class="paginate">
        <div class="overflow-auto">
-    <!-- Use text in props -->
     <b-pagination
       v-model="currentPage"
       :total-rows="rows"
@@ -16,13 +22,7 @@
       @input=paginate(currentPage)
     ></b-pagination>
     </div>
-   
-    <!-- <ol>
-     <li v-for="response in allPosts" :key="response.id">
-        {{response}}
-       </li>
-     </ol>
-      -->
+    </b-container>
     </b-container>
 </template>
 
@@ -43,18 +43,20 @@ export default {
   },
   computed: {
     ...mapGetters([
-    'allPosts','rows','displayPosts'
+    'allPosts','rows','displayPosts','searching'
   ])
   },
   methods: {
     paginate(currentPage) {
        this.$store.dispatch('paginate', {currentPage, perPage: this.perPage})
+    },
+    search(){
+      this.$store.dispatch('noResult')
     }
 } 
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .home {
   h3 {
@@ -67,8 +69,20 @@ export default {
     border-radius: 50%;;
     }
   }
+  .return {
+    background: #42b983;
+    border-color: #42b983;
+  }
+  .return:hover {
+    background: #266d4d;
+    color: rgb(184, 184, 184);
+  }
+   div.overflow-auto {
+     display: flex;
+     justify-content: flex-end;
   .pag {
-    margin: 20px 0;
+    margin: 50px 0;  
+  }
   }
   @media (max-width: 576px) {
     div.overflow-auto {
@@ -76,16 +90,5 @@ export default {
       justify-content: center;
     }
   }
-ul {
-  /* list-style-type: none; */
-  padding: 0;
-}
-// li {
-//   /* display: inline-block;
-//   margin: 0 10px; */
-// }
-a {
-  color: #42b983;
-}
 }
 </style>

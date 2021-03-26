@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div class="page" v-if="showSpinner">
+      <b-spinner class="spinner" variant="success"></b-spinner>
+    </div>
     <div id="nav">
   <the-navigation />
     </div>
@@ -11,17 +14,35 @@
 
 <script>
 import TheNavigation from './components/TheNavigation.vue'
+import { mapGetters } from 'vuex'
 
 export default {
-  components: { TheNavigation }
+  components: { 
+    TheNavigation
+  },
+  computed: {
+    ...mapGetters(['showSpinner'])
+  }
 }
 </script>
 
 <style>
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #f0f8ff;
-    padding-bottom: 100px;
+  padding-bottom: 100px;
+}
+.page {
+  position: absolute;
+  z-index: 5;
+  background: #0000004d;
+  width: 100%;
+  height: 100%;
+}
+.spinner {
+  position: relative;
+  top: 50%;
+  left: 50%;
 }
 .fade-leave-active,
 .fade-enter-active {

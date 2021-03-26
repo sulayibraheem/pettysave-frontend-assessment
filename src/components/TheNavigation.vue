@@ -1,17 +1,10 @@
 <template>
-  <b-navbar toggleable="md" type="dark">
+  <b-navbar toggleable="sm" type="dark">
     <b-navbar-brand translate="no">Blog</b-navbar-brand>
-
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-    <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <router-link class="nav-link" to="/">All Posts</router-link>
-        <router-link class="nav-link" to="postPage">Favourite Posts</router-link>
+        <router-link class="nav-link" to="/"><b-icon-house-fill /></router-link>
+       
       </b-navbar-nav>
-          </b-collapse>
-
-      <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-form @submit.prevent="search">
           <b-form-input size="lg" v-model="searchText" class="mr-sm-2" placeholder="Search Posts"></b-form-input>
@@ -24,11 +17,15 @@
 </template>
 
 <script>
+import { BIconHouseFill } from "bootstrap-vue"
 export default {
   data () {
     return {
     searchText: ''
     }
+  },
+  components: {
+    BIconHouseFill
   },
 
   methods: {
@@ -72,6 +69,9 @@ div#nav {
     @media (max-width: 576px){
       .form-control-lg {
         margin: 20px 0 0px 0;
+      }
+      ul.ml-auto {
+        margin-left: 0 !important;
       }
     }
   }

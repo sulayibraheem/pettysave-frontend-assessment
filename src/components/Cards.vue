@@ -1,5 +1,6 @@
 <template>
   <b-container fluid>
+    <transition-group class="animation" name="fade" mode="out-in">
     <b-row align-v="start" v-for="post in posts" :key='post.id'>
      <b-card no-body
     :img-src= allImages[post.id].url
@@ -20,20 +21,16 @@
 
     <b-button  :to="{name: 'postDetails', params: {id: post.id}}" variant="secondary">See Post</b-button>
     </b-card>
-    <b-card-footer v-if="click">
-      <button><b-icon-heart /></button>
+    <b-card-footer>
+        <p>Post Id: {{post.id}}</p>
     </b-card-footer>
-    <b-card-footer v-else>
-     <button><b-icon-heart-fill /></button>
-    </b-card-footer>
-    <!-- <p>{{post.id}}</p> -->
     </b-card>
     </b-row>
+      </transition-group>
   </b-container>
 </template>
 
 <script>
-import { BIconHeartFill, BIconHeart } from 'bootstrap-vue';
 import { mapGetters, mapActions } from "vuex";
 export default {
   props:['posts'],
@@ -44,16 +41,14 @@ export default {
 
   methods: {
     ...mapActions(['getPosts']),
-    ...mapActions(['getImages'])
+    ...mapActions(['getImages']),
   },
+
   created () {
     this.getPosts()
     this.getImages()
   },
-  components: {
-    BIconHeart,
-    BIconHeartFill
-  },
+
   data () {
     return {
       click: false
@@ -64,11 +59,12 @@ export default {
 
 <style lang="scss" scoped>
 .container-fluid {
-    display: flex;
+    padding: 0;
+  .animation {
+     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 0;
-
   .container-card {
     margin: 20px 0;
     border: 1px solid rgba(0,0,0,.125);
@@ -97,5 +93,14 @@ export default {
       }
     }
   }
-} 
+  .fade-leave-active,
+.fade-enter-active {
+  transition: opacity 0.5s
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+}
+}
 </style>
