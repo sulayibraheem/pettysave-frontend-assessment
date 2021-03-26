@@ -38,7 +38,7 @@ export default {
 
    data () {
     return {
-      perPage: 6,
+      perPage: 9,
       currentPage: 1,
     }
   },

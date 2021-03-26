@@ -47,8 +47,8 @@ const actions = {
         const response = await apiImages.data;
         const moreImages = await axios.get('https://jsonplaceholder.typicode.com/albums/2/photos');
         const res = await moreImages.data;
-        commit('setAllImages', [...response, ...res]);
-        commit('setStoreImages', [...response, ...res]);
+        commit('setAllImages', [...response, ...res, ...res]);
+        commit('setStoreImages', [...response, ...res, ...res]);
     } catch(e){
         console.error(e)
       } finally {
@@ -70,7 +70,7 @@ const actions = {
   //Function that controls the pagination
   async paginate({commit, state}, {currentPage, perPage}){
     const start = (currentPage - 1) * perPage
-    const display = state.allPosts.slice(start, start+6)
+    const display = state.allPosts.slice(start, start+9)
     commit('setDisplayPosts', display)
   },
   updatePagination({commit, dispatch}, {updatePage,currentPage,perPage}){
@@ -85,8 +85,12 @@ const actions = {
     const updatePage = state.allPosts.filter(val => val.title.toLowerCase().includes(text.toLowerCase()));
     if(updatePage.length==0){
       commit('setSearching', true)
+      dispatch("updatePagination",{updatePage, currentPage: 1, perPage: 9});
+    commit('setShowSpinner', false)
+    return;
     }
-    dispatch("updatePagination",{updatePage, currentPage: 1, perPage: 6});
+    commit('setSearching', false)
+    dispatch("updatePagination",{updatePage, currentPage: 1, perPage: 9});
     commit('setShowSpinner', false)
   },
   noResult({commit,dispatch}){
@@ -94,7 +98,7 @@ const actions = {
     const updatePage = state.storePost
     commit('setAllPosts', state.storePost)
     commit('setAllImages', state.storeImages)
-    dispatch("updatePagination",{updatePage, currentPage: 1, perPage: 6});
+    dispatch("updatePagination",{updatePage, currentPage: 1, perPage: 9});
     commit('setShowSpinner', false)
   }
 }

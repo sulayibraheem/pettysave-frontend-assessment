@@ -19,12 +19,12 @@
               {{post.body}}
             </b-card-text>
 
-            <b-button  :to="{name: 'postDetails', params: {id: post.id}}" variant="secondary">
+            <b-button  class="buton" :to="{name: 'postDetails', params: {id: post.id}}" variant="secondary">
               See Post
             </b-button>
           </b-card>
           <b-card-footer>
-            <p>Post Id: {{post.id}}</p>
+            <p>{{post.id}} of 100</p>
           </b-card-footer>
         </b-card>
       </b-row>
@@ -71,8 +71,12 @@ export default {
     flex-wrap: wrap;
     padding: 0;
     .container-card {
+     box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
       margin: 20px 0;
       border: 1px solid rgba(0,0,0,.125);
+      article.card {
+        border: none;
+      }
       div.card-body {
         border: none;
         max-width: 100%;
@@ -86,13 +90,20 @@ export default {
         .card-title {
         -webkit-line-clamp: 1;
         }
+        .buton {
+          background: #42b983;
+          border-color: #42b983;
+        }
+        .buton:hover {
+          background: #286b4d;
+          border-color: #286b4d;
+        }
       }
       .card-footer {
         text-align: center;
-        button {
-          border: none;
-          background: transparent;
-       }
+        p {
+          font-size: 0.7em;
+        }
       }
     }
     .fade-leave-active,
