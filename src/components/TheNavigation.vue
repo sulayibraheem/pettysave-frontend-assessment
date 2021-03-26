@@ -68,6 +68,9 @@ div#nav {
     @media (max-width: 576px){
       .form-control-lg {
         margin: 20px 0 5px 0;
+        height: auto;
+        font-size: 1em;
+        padding: .7rem 1rem;
       }
       ul.ml-auto {
         margin-left: 0 !important;
