@@ -8,8 +8,8 @@
       <b-col class="post" md="6">
         <h3 class="title">Post Title: {{post.title}} <hr></h3>
         <p class="body">{{post.body}}</p>
-         <button v-if="like" @click="unlike">Like This Post <b-icon-hand-thumbs-down /></button>
-        <button v-else @click="unlike">Post Liked <b-icon-hand-thumbs-up /></button>
+         <b-button v-if="like" variant="danger" @click="unlike">Like This Post <b-icon-hand-thumbs-down /></b-button>
+        <b-button v-else variant="success" @click="unlike">Post Liked <b-icon-hand-thumbs-up /></b-button>
         <b-col>
           <h3 class="title">Comments<hr></h3>
         </b-col>
@@ -101,7 +101,7 @@ export default {
     }
     button {
     border: 0;
-    background: transparent;
+    // background: transparent;
     margin-bottom: 50px;
   }
   .comments {
