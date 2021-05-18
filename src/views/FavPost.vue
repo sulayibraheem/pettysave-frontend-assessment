@@ -2,11 +2,11 @@
   <b-container class="home">
     <b-container>
       <h3>
-        Json Placeholder Posts
+        Favourite Posts
         <hr />
       </h3>
     </b-container>
-    <cards :posts="displayPosts" />
+    <cards :posts="showFavPost" :currentPage="currentPage" :perPage="perPage" />
     <b-container v-if="searching" style="text-align: center">
       <h3>No Result Found</h3>
       <b-button class="return" @click="search">Return To Posts</b-button>
@@ -15,7 +15,7 @@
       <div class="overflow-auto">
         <b-pagination
           v-model="currentPage"
-          :total-rows="rows"
+          :total-rows="favRows"
           :per-page="perPage"
           first-text="First"
           prev-text="Prev"
@@ -46,14 +46,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["allPosts", "rows", "displayPosts", "searching"]),
+    ...mapGetters(["showFavPost", "favPost", "favRows", "searching"]),
   },
   methods: {
     paginate(currentPage) {
       this.$store.dispatch("paginate", {
         currentPage,
         perPage: this.perPage,
-        posts: this.allPosts,
+        posts: this.favPost,
       });
     },
     search() {
