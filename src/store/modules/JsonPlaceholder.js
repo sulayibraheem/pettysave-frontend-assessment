@@ -87,7 +87,7 @@ const actions = {
   updatePagination({ commit, dispatch }, { updatePage, currentPage, perPage }) {
     commit("setAllPosts", updatePage);
     commit("setRows", updatePage.length);
-    dispatch("paginate", { currentPage, perPage });
+    dispatch("paginate", { currentPage, perPage, posts: updatePage });
   },
   async search({ commit, dispatch }, { text }) {
     commit("setShowSpinner", true);

@@ -16,6 +16,7 @@ const actions = {
   favId({ commit, dispatch }, { id }) {
     if (state.fav.includes(id)) return;
     commit("setFav", id);
+    window.localStorage.setItem("storeId", state.fav);
     dispatch("addToFav");
   },
 
@@ -36,8 +37,19 @@ const actions = {
     );
     commit("setShowFavPost", display);
     commit("removeFav", fav);
+    window.localStorage.setItem("storeId", fav);
     commit("setFavRows", fav.length);
     commit("setFavPost", updatedPost);
+  },
+
+  storedPost({ commit }) {
+    const a = window.localStorage.getItem("storeId");
+    if (a !== null && a !== undefined) {
+      const b = a.split(",").map((id) => Number(id));
+      for (const arr of b) {
+        if (state.fav.indexOf(arr) === -1) commit("setFav", arr);
+      }
+    }
   },
 };
 

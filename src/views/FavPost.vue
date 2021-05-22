@@ -60,6 +60,12 @@ export default {
       this.$store.dispatch("noResult");
     },
   },
+  created() {
+    this.$store.dispatch("storedPost");
+  },
+  mounted() {
+    this.$store.dispatch("addToFav");
+  },
 };
 </script>
 
