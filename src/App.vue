@@ -4,31 +4,31 @@
       <b-spinner class="spinner" variant="success"></b-spinner>
     </div>
     <div id="nav">
-  <the-navigation />
+      <the-navigation />
     </div>
     <transition name="fade" mode="out-in">
-    <router-view/>
+      <router-view />
     </transition>
   </div>
 </template>
 
 <script>
-import TheNavigation from './components/TheNavigation.vue'
-import { mapGetters } from 'vuex'
+import TheNavigation from "./components/TheNavigation.vue";
+import { mapGetters } from "vuex";
 
 export default {
-  components: { 
-    TheNavigation
+  components: {
+    TheNavigation,
   },
   computed: {
-    ...mapGetters(['showSpinner'])
-  }
-}
+    ...mapGetters(["showSpinner"]),
+  },
+};
 </script>
 
 <style>
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f0f8ff;
   padding-bottom: 100px;
 }
@@ -46,7 +46,7 @@ body {
 }
 .fade-leave-active,
 .fade-enter-active {
-  transition: opacity 0.3s
+  transition: opacity 0.3s;
 }
 .fade-enter,
 .fade-leave-to {
