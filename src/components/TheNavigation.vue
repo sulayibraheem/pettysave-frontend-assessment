@@ -1,6 +1,8 @@
 <template>
   <b-navbar toggleable="sm" type="dark">
-    <b-navbar-brand translate="no">Blog</b-navbar-brand>
+    <b-navbar-brand translate="no"
+      ><router-link id="home" to="/">Blog</router-link>></b-navbar-brand
+    >
     <b-navbar-nav>
       <router-link class="nav-link" to="/"
         ><b-icon-house-fill @click="home"
@@ -69,6 +71,10 @@ div#nav {
     }
     a.router-link-exact-active {
       color: #42b983;
+    }
+    a#home {
+      color: white;
+      text-decoration: none;
     }
     .form-control-lg {
       height: calc(1em + 0.6rem);

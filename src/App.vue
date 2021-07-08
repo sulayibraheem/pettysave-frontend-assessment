@@ -14,7 +14,7 @@
 
 <script>
 import TheNavigation from "./components/TheNavigation.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
@@ -22,6 +22,14 @@ export default {
   },
   computed: {
     ...mapGetters(["showSpinner"]),
+  },
+  methods: {
+    ...mapActions(["getPosts"]),
+    ...mapActions(["getImages"]),
+  },
+  created() {
+    this.getImages();
+    this.getPosts();
   },
 };
 </script>

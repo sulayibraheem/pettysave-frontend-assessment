@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import { BIconHeart } from "bootstrap-vue";
 
 export default {
@@ -51,9 +51,6 @@ export default {
   computed: mapGetters(["showFavPost", "allImages", "allPosts"]),
 
   methods: {
-    ...mapActions(["getPosts"]),
-    ...mapActions(["getImages"]),
-
     clicked(e) {
       var element = e.currentTarget;
 
@@ -117,11 +114,6 @@ export default {
         });
       }
     },
-  },
-
-  created() {
-    this.getPosts();
-    this.getImages();
   },
 
   data() {
