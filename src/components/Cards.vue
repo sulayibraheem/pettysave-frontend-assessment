@@ -136,6 +136,11 @@ export default {
       box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
       margin: 20px 0;
       border: 1px solid rgba(0, 0, 0, 0.125);
+      .card-img-top {
+        height: 270px;
+        width: 100%;
+        background-color: gray;
+      }
       article.card {
         border: none;
       }
